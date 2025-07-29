@@ -1,0 +1,11 @@
+<div class="p-4 max-w-md mx-auto text-center">
+  <h1 class="text-xl font-bold mb-4">Nurse Login</h1>
+
+  <input type="text" [(ngModel)]="username" placeholder="Username" class="input mb-2 w-full" />
+  <input type="password" [(ngModel)]="password" placeholder="Password" class="input mb-4 w-full" />
+
+  <button class="btn w-full" (click)="login()">Log In</button>
+  <button class="btn w-full mt-2" (click)="useFaceId()">Use Face ID</button>
+
+  <p class="text-red-500 mt-4" *ngIf="error()">{{ error() }}</p>
+</div>
