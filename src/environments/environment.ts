@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  useFakeBiometric: true
+  useFakeBiometric: true,
+  useMsalAuth: false,
 };

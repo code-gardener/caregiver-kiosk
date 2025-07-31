@@ -1,17 +1,15 @@
-import { Component, signal } from '@angular/core';
+import { Component, Inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { NurseAuthService } from '../../services/nurse-auth.service';
 import { FormsModule } from '@angular/forms';
+import { NURSE_AUTH } from '../../services/nurse-auth-token.service';
+import { NurseAuth } from '../../services/nurse-auth.interface';
 
 @Component({
   selector: 'app-nurse-login',
   templateUrl: './nurse-login.component.html',
   standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule,
-  ],
+  imports: [FormsModule, CommonModule],
   styleUrls: ['./nurse-login.component.scss']
 })
 export class NurseLoginComponent {
@@ -20,7 +18,7 @@ export class NurseLoginComponent {
   error = signal('');
 
   constructor(
-    private auth: NurseAuthService,
+    @Inject(NURSE_AUTH) private auth: NurseAuth,
     private router: Router
   ) {}
 

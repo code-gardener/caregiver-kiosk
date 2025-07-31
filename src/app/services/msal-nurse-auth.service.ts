@@ -1,13 +1,15 @@
-// nurse-auth.service.ts
 import { Injectable, signal } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
 import { BiometricAuth as FaceAuth } from '@aparajita/capacitor-biometric-auth';
 import { NurseAuth } from "./nurse-auth.interface";
+import { MsalService } from '@azure/msal-angular';
 
 const NURSE_STORAGE_KEY = 'nurseToken';
 
 @Injectable({ providedIn: 'root' })
-export class HardcodedNurseAuthService implements NurseAuth {
+export class MsalNurseAuthService implements NurseAuth {
+  constructor(private msal: MsalService) {}
+
   private _isAuthenticated = signal(false);
   isAuthenticated = this._isAuthenticated.asReadonly();
 
